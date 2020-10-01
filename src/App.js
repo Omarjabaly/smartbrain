@@ -23,7 +23,7 @@ class App extends Component {
 		};
 	}
 
-
+///////// WTF
 	render () {
 
 		const recognizeFace = () => {
