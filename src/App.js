@@ -20,10 +20,16 @@ class App extends Component {
 			imageUrl: '',
 			route: 'signin',
 			facebox: { },
+			user: {
+				id: '',
+				name: '',
+				email: '',
+				count: '',
+				joined: ''
+			}
 		};
 	}
 
-///////// WTF
 	render () {
 
 		const recognizeFace = () => {
@@ -67,6 +73,10 @@ class App extends Component {
 
 		}
 
+		const loadUser = (user) => {
+			this.setState({ user: user })
+		}
+
 
 		  return (
 			<div>
@@ -106,11 +116,11 @@ class App extends Component {
 					<Logo />
 			    	{(() => {
 			    		switch (this.state.route) {
-			    		case 'signin': return <SignIn routeChange={routeChange} />;
+			    		case 'signin': return <SignIn routeChange={routeChange} loadUser={loadUser} />;
 			    		case 'register': return <Register routeChange={routeChange} />;
 			    		default: return (
 			    			<div>
-				    		  	<Rank />
+				    		  	<Rank user={this.state.user} />
 								<InputUrl 	onInputChange={onInputChange} 
 											recognizeFace={recognizeFace}
 								/>

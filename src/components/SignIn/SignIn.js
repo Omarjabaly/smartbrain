@@ -66,8 +66,23 @@ class SignIn extends Component {
 				      				.then(response => response.json())
 				      				.then(data => {
 
-				      					if (data === 'success') { this.props.routeChange('home') 
-				      									      					}
+				      					if (data === 'success') { 
+
+					      					fetch('http://localhost:3001/params', {
+						      					method: 'POST',
+						      					headers: { 'Content-Type': 'application/json' },
+						      					body: JSON.stringify({
+						      						    "email": this.state.signinEmail,
+						      					})
+					      					})
+					      					.then(response => response.json())
+					      					.then(data => {
+					      						this.props.loadUser(data);
+					      						this.props.routeChange('home') 
+					      					})
+				      						
+				      						
+				      					}
 				      				})
 
 				      				}
