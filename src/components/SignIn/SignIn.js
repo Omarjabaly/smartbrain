@@ -62,7 +62,7 @@ class SignIn extends Component {
 				      					console.log('Please fill all fields')
 				      				} else {
 
-				      					fetch('http://localhost:3001/signin', {
+				      					fetch('https://fathomless-ocean-16995.herokuapp.com/signin', {
 				      					method: 'POST',
 				      					headers: { 'Content-Type': 'application/json' },
 				      					body: JSON.stringify({
@@ -75,7 +75,7 @@ class SignIn extends Component {
 
 					      					if (data === 'success') { 
 
-						      					fetch('http://localhost:3001/params', {
+						      					fetch('https://fathomless-ocean-16995.herokuapp.com/params', {
 							      					method: 'POST',
 							      					headers: { 'Content-Type': 'application/json' },
 							      					body: JSON.stringify({

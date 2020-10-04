@@ -34,7 +34,7 @@ class App extends Component {
 
 		const recognizeFace = () => {
 			this.setState({imageUrl: this.state.inputUrl});	
-			fetch('http://localhost:3001/imageurl', {
+			fetch('https://fathomless-ocean-16995.herokuapp.com/imageurl', {
 			   			method: 'POST',
 			   			headers: { 'Content-Type': 'application/json' },
 			   			body: JSON.stringify({ "inputUrl": this.state.inputUrl })
@@ -58,7 +58,7 @@ class App extends Component {
 													left: left_col 
 												}
 						}),
-						fetch('http://localhost:3001/image', {
+						fetch('https://fathomless-ocean-16995.herokuapp.com/image', {
 				      			method: 'PUT',
 				      			headers: { 'Content-Type': 'application/json' },
 				      			body: JSON.stringify({

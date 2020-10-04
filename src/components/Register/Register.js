@@ -71,7 +71,7 @@ class Register extends Component {
 				      					
 				      				} else {
 
-				      					fetch('http://localhost:3001/register', {
+				      					fetch('https://fathomless-ocean-16995.herokuapp.com/register', {
 				      					method: 'POST',
 				      					headers: { 'Content-Type': 'application/json' },
 				      					body: JSON.stringify({
