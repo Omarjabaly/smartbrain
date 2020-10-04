@@ -16,7 +16,10 @@ const Navigation = (props) => {
 	else return (
 						<div className='flex justify-end h2'>
 							<h1 className='f5 normal pa3 ma3 pointer'
-								onClick={() => props.routeChange('signin')}
+								onClick={() => {
+									props.routeChange('signin');
+									props.signoutReset();
+								}}
 							> Sign Out </h1>
 						</div>
 		);

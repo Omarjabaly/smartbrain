@@ -95,6 +95,22 @@ class App extends Component {
 			this.setState({ user: user })
 		}
 
+		const signoutReset = () => {
+			this.setState({
+				inputUrl: '',
+				imageUrl: '',
+				route: 'signin',
+				facebox: { },
+				user: {
+					id: '',
+					name: '',
+					email: '',
+					count: '',
+					joined: ''
+				}
+			})
+		}
+
 
 		  return (
 			<div>
@@ -130,7 +146,7 @@ class App extends Component {
 			    />
 
 			    <div>
-					<Navigation route={this.state.route} routeChange={routeChange} />
+					<Navigation route={this.state.route} routeChange={routeChange} signoutReset={signoutReset} />
 					<Logo />
 			    	{(() => {
 			    		switch (this.state.route) {
