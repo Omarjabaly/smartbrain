@@ -53,7 +53,21 @@ class App extends Component {
 													bottom: bottom_row, 
 													left: left_col 
 												}
-						})
+						}),
+						fetch('http://localhost:3001/image', {
+				      			method: 'PUT',
+				      			headers: { 'Content-Type': 'application/json' },
+				      			body: JSON.stringify({
+				      				    "id": this.state.user.id
+				      			})
+				      	})
+				      	.then(response => response.json())
+				      	.then(user => {
+				      		this.setState({ user: user })
+				      	})
+				      	.catch(console.log)
+
+
 					)
 			.catch(err => console.log(err))
 	  		
@@ -120,7 +134,7 @@ class App extends Component {
 			    		case 'register': return <Register routeChange={routeChange} />;
 			    		default: return (
 			    			<div>
-				    		  	<Rank user={this.state.user} />
+				    		  	<Rank user={this.state.user}/>
 								<InputUrl 	onInputChange={onInputChange} 
 											recognizeFace={recognizeFace}
 								/>
