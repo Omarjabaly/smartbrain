@@ -20,6 +20,8 @@ class SignIn extends Component {
 		const onEmailChange = (event) => { this.setState({ signinEmail: event.target.value }) }
 
 		const onPasswordChange = (event) => { this.setState({ signinPassword: event.target.value }) }
+
+		const { signinEmail, signinPassword } = this.state
 		
 		return (
 
@@ -55,41 +57,45 @@ class SignIn extends Component {
 				      			value="Sign in"
 				      			onClick={ () => {
 
-				      				fetch('http://localhost:3001/signin', {
+				      				if (!signinEmail || !signinPassword) {
+
+				      					console.log('Please fill all fields')
+				      				} else {
+
+				      					fetch('http://localhost:3001/signin', {
 				      					method: 'POST',
 				      					headers: { 'Content-Type': 'application/json' },
 				      					body: JSON.stringify({
-				      						    "email": this.state.signinEmail,
-    											"password": this.state.signinPassword
+				      						    "email": signinEmail,
+    											"password": signinPassword
 				      					})
-				      				})
-				      				.then(response => response.json())
-				      				.then(data => {
+					      				})
+					      				.then(response => response.json())
+					      				.then(data => {
 
-				      					if (data === 'success') { 
+					      					if (data === 'success') { 
 
-					      					fetch('http://localhost:3001/params', {
-						      					method: 'POST',
-						      					headers: { 'Content-Type': 'application/json' },
-						      					body: JSON.stringify({
-						      						    "email": this.state.signinEmail,
+						      					fetch('http://localhost:3001/params', {
+							      					method: 'POST',
+							      					headers: { 'Content-Type': 'application/json' },
+							      					body: JSON.stringify({
+							      						    "email": signinEmail,
+							      					})
 						      					})
-					      					})
-					      					.then(response => response.json())
-					      					.then(data => {
-					      						this.props.loadUser(data);
-					      						this.props.routeChange('home') 
-					      					})
-					      					.catch(console.log)
-				      						
-				      						
-				      					}
-				      				})
-				      				.catch(console.log)
-
+						      					.then(response => response.json())
+						      					.then(data => {
+						      						this.props.loadUser(data);
+						      						this.props.routeChange('home') 
+						      					})
+						      					.catch(console.log)
+					      						
+					      						
+					      					}
+					      				})
+					      				.catch(console.log)
 				      				}
-				      			
-				      			}
+
+				      			}}
 				      />
 				    </div>
 				    <div className="lh-copy mt3">

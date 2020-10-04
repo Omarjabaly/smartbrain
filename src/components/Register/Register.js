@@ -19,6 +19,7 @@ class Register extends Component {
 		const onNameChange = (event) => { this.setState({ registerName: event.target.value }) }
 		const onEmailChange = (event) => { this.setState({ registerEmail: event.target.value }) }
 		const onPasswordChange = (event) => { this.setState({ registerPassword: event.target.value }) }
+		const { registerName, registerEmail, registerPassword } = this.state
 
 		return (
 
@@ -63,24 +64,32 @@ class Register extends Component {
 				      			type="submit" 
 				      			value="Register"
 				      			onClick={() => {
-				      				fetch('http://localhost:3001/register', {
+
+				      				if (!registerName || !registerEmail || !registerPassword) {
+
+				      					console.log('Please fill all fields')
+				      					
+				      				} else {
+
+				      					fetch('http://localhost:3001/register', {
 				      					method: 'POST',
 				      					headers: { 'Content-Type': 'application/json' },
 				      					body: JSON.stringify({
-				      							"name": this.state.registerName,
-				      						    "email": this.state.registerEmail,
-    											"password": this.state.registerPassword
+				      							"name": registerName,
+				      						    "email": registerEmail,
+    											"password": registerPassword
 				      					})
-				      				})
-				      				.then(response => response.json())
-				      				.then(data => {
-				      					if (data.id) {
-				      						this.props.routeChange('home')
-				      					} 
-				      				})
-				      				.catch(console.log)
+					      				})
+					      				.then(response => response.json())
+					      				.then(data => {
+					      					if (data.id) {
+					      						this.props.routeChange('home')
+					      					} 
+					      				})
+					      				.catch(console.log)
 				      				}
-				      			}
+				      				
+				      			}}
 				      />
 				    </div>
 				  </div>
