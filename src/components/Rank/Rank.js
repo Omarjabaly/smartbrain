@@ -12,7 +12,7 @@ const Rank = (props) => {
 			<span className='f5 b'> Smartbrain </span> 
 			App where you can detect faces within images.. Give it a try 
 			</p>
-			<p className='tc f5 h1'> You are ranked <span className='f5 b'> #{props.user.count}</span> 
+			<p className='tc f5 h1'> You current score is <span className='f5 b'> #{props.user.count}</span> 
 			</p>
 		</div>
 

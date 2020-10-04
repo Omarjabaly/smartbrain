@@ -151,7 +151,7 @@ class App extends Component {
 			    	{(() => {
 			    		switch (this.state.route) {
 			    		case 'signin': return <SignIn routeChange={routeChange} loadUser={loadUser} />;
-			    		case 'register': return <Register routeChange={routeChange} />;
+			    		case 'register': return <Register routeChange={routeChange} loadUser={loadUser} />;
 			    		default: return (
 			    			<div>
 				    		  	<Rank user={this.state.user}/>

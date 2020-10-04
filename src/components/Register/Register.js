@@ -72,17 +72,18 @@ class Register extends Component {
 				      				} else {
 
 				      					fetch('https://fathomless-ocean-16995.herokuapp.com/register', {
-				      					method: 'POST',
-				      					headers: { 'Content-Type': 'application/json' },
-				      					body: JSON.stringify({
-				      							"name": registerName,
-				      						    "email": registerEmail,
-    											"password": registerPassword
-				      					})
+					      					method: 'POST',
+					      					headers: { 'Content-Type': 'application/json' },
+					      					body: JSON.stringify({
+					      							"name": registerName,
+					      						    "email": registerEmail,
+	    											"password": registerPassword
+				      						})
 					      				})
 					      				.then(response => response.json())
 					      				.then(data => {
 					      					if (data.id) {
+					      						this.props.loadUser(data)
 					      						this.props.routeChange('home')
 					      					} 
 					      				})
