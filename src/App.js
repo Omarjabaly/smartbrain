@@ -34,9 +34,13 @@ class App extends Component {
 
 		const recognizeFace = () => {
 			this.setState({imageUrl: this.state.inputUrl});	
-			const api = new Clarifai.App({ apiKey: '82fd10651ee34bc88e9953b18595fe19' });
-			api.models.predict('e15d0f873e66047e579f90cf82c9882z', this.state.inputUrl)
-			.then((response) => {
+			fetch('http://localhost:3001/imageurl', {
+			   			method: 'POST',
+			   			headers: { 'Content-Type': 'application/json' },
+			   			body: JSON.stringify({ "inputUrl": this.state.inputUrl })
+			})
+			.then(response => response.json())
+			.then(response => {
 					let image = document.getElementById("faceRecognitionImage");
 					let imageHeight = Number(image.height);
 					let imageWidth = Number(image.width);

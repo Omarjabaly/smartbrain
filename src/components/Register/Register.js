@@ -78,6 +78,7 @@ class Register extends Component {
 				      						this.props.routeChange('home')
 				      					} 
 				      				})
+				      				.catch(console.log)
 				      				}
 				      			}
 				      />

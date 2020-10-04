@@ -80,10 +80,12 @@ class SignIn extends Component {
 					      						this.props.loadUser(data);
 					      						this.props.routeChange('home') 
 					      					})
+					      					.catch(console.log)
 				      						
 				      						
 				      					}
 				      				})
+				      				.catch(console.log)
 
 				      				}
 				      			
